@@ -1,2 +1,2 @@
 # DemoWatchOS
-Demo for communication between a watchOS and iOS app using `WCSession`
+Demo project for communication between a watchOS and iOS app using `WCSession`
