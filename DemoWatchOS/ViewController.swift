@@ -14,6 +14,7 @@ class ViewController: UIViewController,WCSessionDelegate {
     var counterData = [String]()
     let session: WCSession? = WCSession.isSupported() ? WCSession.default() : nil
     
+    @IBOutlet weak var countLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,9 @@ class ViewController: UIViewController,WCSessionDelegate {
    
     @available(iOS 9.0, *)
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) -> Void {
-        print(message)
+        print("Count = \(message["counterValue"] ?? 0)")
+        countLabel.text = "Count = \(message["counterValue"] ?? 0)"
+        
         
     }
     

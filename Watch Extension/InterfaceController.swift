@@ -13,6 +13,9 @@ import WatchConnectivity
 class InterfaceController: WKInterfaceController,WCSessionDelegate {
     var counter = 0
     var session : WCSession!
+
+    @IBOutlet var countLabel: WKInterfaceLabel!
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -34,13 +37,17 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+    
+    
     @IBAction func onButtonClicked() {
-        print(counter)
+        counter += 1
         let applicationData = ["counterValue":String(counter)]
         session.sendMessage(applicationData, replyHandler:  nil, errorHandler: { (error) -> Void in
-            print("error")
+            print(error.localizedDescription)
         })
-        counter += 1
+        countLabel.setText("\(counter)")
+        
+
     }
     
 
